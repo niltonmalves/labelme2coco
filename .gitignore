@@ -5,3 +5,4 @@ __pycache__
 trainval.json
 .images1
 .images1_old
+*.json
