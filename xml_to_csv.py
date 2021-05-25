@@ -4,8 +4,10 @@ import os
 from bs4 import BeautifulSoup as b
 import glob
 
+# \\ica-094\share\nilton\formatos
 
-all = glob.glob("\\\\ica-095\\tables\\manntis\\formatos\\*.xml")
+# all = glob.glob("\\\\ica-095\\tables\\manntis\\formatos\\*.xml")
+all = glob.glob("\\\\ica-094\\share\\nilton\\formatos\\*.xml")
 print("all is :",all)
 for f in all:
     print(f)
@@ -27,12 +29,13 @@ for f in all:
 
 
     path =  [ values.text for values in soup.findAll("path")]
+    font = ["den" for i in range(0, len(label))]
     center_x = ["" for i in range(0, len(label))]
     center_y = center_x
     width =center_x
     height =center_x
     text = center_x
-    font = center_x
+    
         
 
     #print(os.path.splitext(filename[0])[0])
@@ -44,5 +47,8 @@ for f in all:
     columns = ['center_x','center_y','width','height','xmin', 'ymin', 'xmax', 'ymax' ,'label','text','font','filename']
     data = [item for item in itertools.zip_longest(center_x,center_y,width,height,xmin, ymin, xmax, ymax ,label,text,font,filenames)] 
     df  = pd.DataFrame(data=data, columns=columns)
-    print("save file on:",f'\\\\ica-095\\tables\\manntis\\formatos\\{os.path.splitext(filename[0])[0]}.csv')
-    df.to_csv(f'\\\\ica-095\\tables\\manntis\\formatos\\{os.path.splitext(filename[0])[0]}.csv',index=False, header=True)
+    # \\ica-094\share\nilton\formatos
+    # print("save file on:",f'\\\\ica-09\\tables\\manntis\\formatos\\{os.path.splitext(filename[0])[0]}.csv')
+    print("save file on:",f'\\\\ica-094\\share\\nilton\\formatos\\{os.path.splitext(filename[0])[0]}.csv')
+    # df.to_csv(f'\\\\ica-095\\tables\\manntis\\formatos\\{os.path.splitext(filename[0])[0]}.csv',index=False, header=True)
+    df.to_csv(f'\\\\ica-094\\share\\nilton\\formatos\\{os.path.splitext(filename[0])[0]}.csv',index=False, header=True)
